@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import dateFormat from 'dateformat'; 
+import dateFormat from 'dateformat'; 
 class StaffList extends Component {
     constructor(props) {
         super(props);
@@ -20,13 +20,13 @@ class StaffList extends Component {
 
         if (staff != null)
         return(
-            <div>
-                <h4>Họ và tên: {this.props.staff.name}</h4>
-                <p>Ngày sinh: {this.props.dateFomat(staff.doB, "dd/mm/yyyy" )} </p>
-                <p>Ngày vào công ty: {this.props.dateFomat(staff.startDate,"dd/mm/yyyy")}</p>
-                <p>Phòng ban: {this.props.staff.department.name}</p>
-                <p>Số ngày nghỉ còn lại: {this.props.staff.annualLeave}</p>
-                <p>Số ngày đã làm thêm: {this.props.staff.overTime}</p>
+            <div class="list-group-item list-group-item col-12 col-sm-6 col-md-4 mt-3">
+                <h4>Họ và tên: {staff.name}</h4>
+                <p>Ngày sinh: { dateFormat(staff.doB, "dd/mm/yyyy" )} </p>
+                <p>Ngày vào công ty: { dateFormat(staff.startDate,"dd/mm/yyyy")}</p>
+                <p>Phòng ban: {staff.department.name}</p>
+                <p>Số ngày nghỉ còn lại: {staff.annualLeave}</p>
+                <p>Số ngày đã làm thêm: {staff.overTime}</p>
 
             </div>
         );
@@ -42,25 +42,27 @@ class StaffList extends Component {
     render() {
         const staffList = this.props.staffs.map((staff) => {
             return (
-             <div in key={staff.id} >
-                    <button onClick={() => this.onStaffSelect(staff)}>
-                     {this.props.staff.name}
-                    </button>
+             < div in key={staff.id} onClick={() => this.onStaffSelect(staff)} 
+             className="col-12 col-sm-6 col-md-4 mt-2" 
+             >
+            <li class="list-group-item list-group-item-success">{staff.name}
+            </li>
+                     
             </div>
               );
               
         })
         return (
             <div className="container">
-                <div className="row">
+                <div class="row">
                     {staffList}
+            
                 </div>
-                <div div className="row">
-                  <div  className="col-12 col-md-6 mt-1" >
+                  <div >
                     {this.renderStaff(this.state.selectedStaff)}
+            
                   </div>
                 </div>
-            </div>
             
             );
     }
