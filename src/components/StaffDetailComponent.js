@@ -6,29 +6,6 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody,
     Modal, ModalHeader, ModalBody, Button, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-function RenderStaff(staff) {
-    if (staff !=null)
-    return (
-        <div>
-            <img width="100%" src={staff.image} alt={staff.name} />  
-        
-                <h4> Họ và tên:</h4>
-                <p> Ngày sinh: { dateFormat(staff.doB, "dd/mm/yyyy" )} </p>
-                <p> Ngày vào công ty: { dateFormat(staff.startDate,"dd/mm/yyyy")}</p>
-                <p> Phòng ban: {staff.department}</p>
-                <p> Số ngày nghỉ còn lại: {staff.annualLeave}</p>
-                <p> Số ngày đã làm thêm: {staff.overTime}</p>
-
-        
-        </div>
-    );
-    else
-    return(
-        <div></div>
-    );
-
-}
-
 
 const StaffDetail = (props) => {
     if (props.staff != null)        
@@ -41,7 +18,14 @@ const StaffDetail = (props) => {
              <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
          </Breadcrumb>
          < div className="col-12 col-md-5 m-1">
-             <RenderStaff staff={props.staff} />
+         <img width="100%" src={props.staff.image} alt={props.staff.name} />  
+        
+        <h4> Họ và tên:</h4>
+        <p> Ngày sinh: { dateFormat(props.staff.doB, "dd/mm/yyyy" )} </p>
+        <p> Ngày vào công ty: { dateFormat(props.staff.startDate,"dd/mm/yyyy")}</p>
+        <p> Phòng ban: {props.staff.department}</p>
+        <p> Số ngày nghỉ còn lại: {props.staff.annualLeave}</p>
+        <p> Số ngày đã làm thêm: {props.staff.overTime}</p>
          </div>
      </div>
      </div>

@@ -8,7 +8,6 @@ import StaffList from './StaffList.js';
 import DepartmentsList from './DepartmentComponent';
 import Salary from './SalaryComponent';
 import { Switch, Route, Redirect } from 'react-router-dom'
-
 import { Navbar, NavbarBrand } from 'reactstrap';
 class Main extends Component {
 
@@ -26,7 +25,6 @@ class Main extends Component {
 
 
     const StaffWithId = ({match}) => {
-      console.log(parseInt(match.params.staffId,10));
       return(
         <div>
           
@@ -41,7 +39,7 @@ class Main extends Component {
         <Header/>
 <Switch>
   <Route exact path="/staffList" component={()=><StaffList staffs={this.state.staffs}/>} />
-  <Route  exact path='/staffList/:staffId' component={StaffWithId} />
+  <Route  path='/staffList/:staffId' component={StaffWithId} />
   <Route exact path="/department" component={()=> <DepartmentsList departments={this.state.departments}/>} />
   <Route exact path="/salary" component={()=><Salary staffs={this.state.staffs}/>} />
   <Redirect to="/staffList" />
