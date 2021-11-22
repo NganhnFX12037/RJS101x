@@ -10,25 +10,28 @@ import { Link } from 'react-router-dom';
 const StaffDetail = (props) => {
     if (props.staff != null)        
     return (
-     <div className="container">
-     <div className="row">
-         <Breadcrumb>
-
-             <BreadcrumbItem><Link to="/staffList">Nhân Viên</Link></BreadcrumbItem>
-             <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
-         </Breadcrumb>
-         < div className="col-12 col-md-5 m-1">
-         <img width="100%" src={props.staff.image} alt={props.staff.name} />  
-        
-        <h4> Họ và tên:</h4>
-        <p> Ngày sinh: { dateFormat(props.staff.doB, "dd/mm/yyyy" )} </p>
-        <p> Ngày vào công ty: { dateFormat(props.staff.startDate,"dd/mm/yyyy")}</p>
-        <p> Phòng ban: {props.staff.department}</p>
-        <p> Số ngày nghỉ còn lại: {props.staff.annualLeave}</p>
-        <p> Số ngày đã làm thêm: {props.staff.overTime}</p>
-         </div>
-     </div>
-     </div>
+    <div>
+            
+                <Breadcrumb className="bg-white"  >
+                    <BreadcrumbItem><Link to="/staffList">Nhân Viên</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
+                </Breadcrumb>
+                
+                <div div className="row p-3">
+                <div className="col-12 col-sm-4 col-md-3" >
+                <img   width="100%" src={props.staff.image} alt={props.staff.name}/>  
+                </div>
+                <div className="col-12 col-sm-9 col-md-8 mb-3" >
+                <h4> Họ và tên: {props.staff.name}</h4>
+                <p> Ngày sinh: { dateFormat(props.staff.doB, "dd/mm/yyyy" )} </p>
+                <p> Ngày vào công ty: { dateFormat(props.staff.startDate,"dd/mm/yyyy")}</p>
+                <p> Phòng ban: {props.staff.department.name}</p>
+                <p> Số ngày nghỉ còn lại: {props.staff.annualLeave}</p>
+                <p> Số ngày đã làm thêm: {props.staff.overTime}</p>
+            </div>
+            </div>
+    
+    </div>   
  );
      else
          return(

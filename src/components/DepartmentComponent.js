@@ -5,7 +5,7 @@ function RenderDepartment ({department}){
 
     return (
         
-            <div class="list-group-item list-group-item col-12 ">
+            <div className="list-group-item list-group-item " style={{border: '1px solid #512DA8'}}>
         
                 <h4>{department.name}</h4>
                 <ul className="list-unstyled">
@@ -23,7 +23,7 @@ const DepartmentsList = (props)=>{
 
         const departmentsList = props.departments.map((department) => {
             return (
-             < div  key={department.id} className="col-12 col-sm-6 col-md-4 mt-3" >
+             < div  key={department.id} className="col-12 col-sm-6 col-md-4 p-2" >
                 <RenderDepartment department={department}/>
             </div>
               );

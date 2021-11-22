@@ -8,7 +8,7 @@ function RenderStaffList ({staff, onClick}){
         <Card>
             <Link to={`/staffList/${staff.id}`}>
             <CardImg width="100%" src={staff.image} />
-            <CardTitle>{staff.name}</CardTitle>
+            <CardTitle className="text-center p-1">{staff.name}</CardTitle>
             </Link>
         </Card>
     );
@@ -18,9 +18,11 @@ const StaffList = (props)=>{
 
         const staffList = props.staffs.map((staff) => {
             return (
-             < div in key={staff.id} className="col-12 col-sm-6 col-md-4 mt-3" >
+             < div in key={staff.id} className="col-12 col-sm-4 col-md-2 p-2" >
+                <div className="rounded" >
                 <RenderStaffList staff={staff} onClick={props.onClick}/>
             </div>
+                </div>
               );
               
         });

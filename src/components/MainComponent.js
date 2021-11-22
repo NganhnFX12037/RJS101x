@@ -27,9 +27,7 @@ class Main extends Component {
     const StaffWithId = ({match}) => {
       return(
         <div>
-          
-          <StaffDetail staff={this.state.staffs.filter((staff) => staff.id === parseInt(match.params.staffId,10))[0]} 
-          />
+          <StaffDetail staff={this.state.staffs.filter((staff) => staff.id === parseInt(match.params.staffId,10))[0]} />
         </div>
       );
     };
