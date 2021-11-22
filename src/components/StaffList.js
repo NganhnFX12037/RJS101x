@@ -27,7 +27,16 @@ const StaffList = (props)=>{
               
         });
         return (
-            <div className="container"> 
+            <div className="container">
+            <div className="row">
+                <div className="col-sm-12 col-md-8">
+                    <h2>Danh sách nhân viên</h2>
+                </div>
+                <div className="col-md-4 mt-2  ">
+                    <input type="text" placeholder="Nhập tên cần tìm kiếm" className="prompt"/>
+                    <i className="fa fa-search ml-2" arian-hidden="false"></i>
+                </div>
+            </div>
                 <div className="row">
                 {staffList}
                 </div>
