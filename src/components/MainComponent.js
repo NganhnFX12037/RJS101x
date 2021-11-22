@@ -16,8 +16,10 @@ class Main extends Component {
 
     this.state = {
          staffs : STAFFS,
-         departments : DEPARTMENTS
-    
+         departments : DEPARTMENTS,
+         searchName :"",
+         searchResults: []
+
     };
   }
 
@@ -31,12 +33,18 @@ class Main extends Component {
         </div>
       );
     };
-    
+    const searchHandler = (getSearchName) => {
+      console.log('new filters', getSearchName);
+      
+      
+    };
     return (
       <div>
         <Header/>
 <Switch>
-  <Route exact path="/staffList" component={()=><StaffList staffs={this.state.staffs}/>} />
+  <Route exact path="/staffList" component={()=><StaffList staffs={this.state.staffs} 
+  onSubmit={searchHandler}/>} 
+  />
   <Route  path='/staffList/:staffId' component={StaffWithId} />
   <Route exact path="/department" component={()=> <DepartmentsList departments={this.state.departments}/>} />
   <Route exact path="/salary" component={()=><Salary staffs={this.state.staffs}/>} />
