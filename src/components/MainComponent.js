@@ -8,7 +8,8 @@ import StaffList from './StaffList.js';
 import DepartmentsList from './DepartmentComponent';
 import Salary from './SalaryComponent';
 import { Switch, Route, Redirect } from 'react-router-dom'
-import * from 'lodash'
+import { Navbar, NavbarBrand } from 'reactstrap';
+class Main extends Component {
 
   constructor(props) {
     super(props);
