@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Card, CardImg, CardImgOverlay,
     CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
@@ -25,14 +25,28 @@ const StaffList = (props)=>{
         
         const { onSubmit} = props;
         const [searchTerm, setSearchTerm] = useState("");
+        const typingTimeoutRef = useRef(null);
+
         function handleSearchTermChange(e) {
+            const value =e.target.value;
             setSearchTerm(e.target.value);
             if(!onSubmit) return;
-            const formValues = {
-                searchTerm: e.target.value,
-            };
-            onSubmit(formValues);
-        }
+            //set --100 -- Clear, set --500--> Submit
+            if(typingTimeoutRef.current) {
+                clearTimeout(typingTimeoutRef.current);
+            }
+            typingTimeoutRef.current = setTimeout(()=> {
+                const formValues = {
+                    searchTerm: value,
+                };
+                onSubmit(formValues);
+            }, 500);
+                
+             }
+             function handleClear(){
+                setSearchTerm("");
+                }
+
         const staffList = props.staffs.map((staff) => {
             return (
              < div in key={staff.id} className="col-12 col-sm-4 col-md-2 p-2" >
@@ -44,7 +58,6 @@ const StaffList = (props)=>{
               
         });
         
-
         return (
             <div className="container">
             <div className="row">
@@ -60,6 +73,7 @@ const StaffList = (props)=>{
                     onChange={handleSearchTermChange}
                     />
                     <i className="fa fa-search ml-2" arian-hidden="false"></i>
+                    <button onClick={handleClear} className="btn btn-warning" type="button">Xoá</button>
                 </div>
             </div>
                 <div className="row">
