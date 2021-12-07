@@ -8,7 +8,7 @@ function RenderStaffList ({staff, onClick}){
         <Card>
             <Link to={`/staffList/${staff.id}`}>
             <CardImg width="100%" src={staff.image} />
-            <CardTitle className="text-center p-1">{staff.name}</CardTitle>
+            <CardTitle className="text-center text-dark p-1">{staff.name}</CardTitle>
             </Link>
         </Card>
     );
@@ -43,9 +43,7 @@ const StaffList = (props)=>{
             }, 500);
                 
              }
-             function handleClear(){
-                setSearchTerm("");
-                }
+            
 
         const staffList = props.staffs.map((staff) => {
             return (
@@ -61,20 +59,10 @@ const StaffList = (props)=>{
         return (
             <div className="container">
             <div className="row">
-                <div className="col-sm-12 col-md-8">
+                <div className="col-sm-12 col-md-7">
                     <h2>Danh sách nhân viên</h2>
                 </div>
-                <div className="col-md-4 mt-2  ">
-                    <input 
-                    type="text" 
-                    placeholder="Nhập tên cần tìm kiếm" 
-                    className="prompt" 
-                    value={searchTerm} 
-                    onChange={handleSearchTermChange}
-                    />
-                    <i className="fa fa-search ml-2" arian-hidden="false"></i>
-                    <button onClick={handleClear} className="btn btn-warning" type="button">Xoá</button>
-                </div>
+              
             </div>
                 <div className="row">
                 {staffList}
